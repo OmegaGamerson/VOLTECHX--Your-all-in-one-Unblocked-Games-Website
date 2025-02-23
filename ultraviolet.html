@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultraviolet Proxy | Voltech</title>
+    <link rel="icon" href="/media/logo.svg" type="image/x-icon" id="favicon">
+    <link rel="stylesheet" href="styles.css">
+    <script src="uv/uv.bundle.js" defer></script>
+    <script src="uv/uv.config.js" defer></script>
+    <script src="uv/register-sw.js" defer></script>
+</head>
+<body>
+<main>
+    <div id="uv-proxy"></div>
+</main>
+<script>
+    (function () {
+        const encodedUrl = window.location.hash.substring(1);
+        const decodedUrl = atob(encodedUrl);
+        const uv = new UVServiceWorker();
+        uv.proxy(decodedUrl);
+    })();
+</script>
+</body>
+</html>
